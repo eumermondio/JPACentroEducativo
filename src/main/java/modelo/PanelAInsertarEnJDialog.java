@@ -92,45 +92,49 @@ public class PanelAInsertarEnJDialog extends JPanel {
 		// ImageIcon(PanelAInsertarEnJDialog.class.getResource("/tutorialJava/capitulo8_AWT_SWING/res/nuevo.png")));
 		toolBar.add(btnNewButton_4);
 
-//		btnNewButton_5 = new JButton("");
-//		btnNewButton_5.setIcon(
-//				new ImageIcon(PanelAInsertarEnJDialog.class.getResource("/capitulo08/Ejercicio02/res/guardar.png")));
-//		btnNewButton_5.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent e) {
-//				if (ent == 0) {
-//					Curso c = new Curso(Integer.parseInt(GestionCurso.jtfId.getText()), GestionCurso.jtfDesc.getText());
-//					if (ControladorCurso.actualizarCurso(c) == 1) {
-//						JOptionPane.showMessageDialog(null, "Actualización o inserción correcta",
-//								"Gestion de fabricantes", JOptionPane.INFORMATION_MESSAGE);
-//					}
-//					GestionCurso.mostrarCurso(ControladorCurso.findUltimoCurso());
-//				}
-//			}
-//		});
-//		// btnNewButton_5.setIcon(new
-//		// ImageIcon(PanelAInsertarEnJDialog.class.getResource("/tutorialJava/capitulo8_AWT_SWING/res/guardar.png")));
-//		toolBar.add(btnNewButton_5);
-//
-//		btnNewButton_6 = new JButton("");
-//		btnNewButton_6.setIcon(
-//				new ImageIcon(PanelAInsertarEnJDialog.class.getResource("/capitulo08/Ejercicio02/res/eliminar.png")));
-//		btnNewButton_6.addActionListener(new ActionListener() {
-//
-//			public void actionPerformed(ActionEvent e) {
-//				// yes = 0 no = 1
-//				if (ent == 0) {
-//					if (JOptionPane.showConfirmDialog(null, "¿Desea eliminar el registro?", "Gestión de cursos",
-//							JOptionPane.YES_NO_OPTION) == 0) {
-//						if (ControladorCurso.borrarCurso(Integer.parseInt(GestionCurso.jtfId.getText())) == 1) {
-//							JOptionPane.showMessageDialog(null, "Borrado correcto", "Gestion de cursos",
-//									JOptionPane.INFORMATION_MESSAGE);
-//						}
-//					}
-//
-//				}
-//			}
-//		});
-//		toolBar.add(btnNewButton_6);
+		btnNewButton_5 = new JButton("Guardar");
+		btnNewButton_5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (ent == 0) {
+					if (GestionCurso.jtfId.getText() != 0) {
+						Curso c = new Curso(Integer.parseInt(GestionCurso.jtfId.getText()),
+								GestionCurso.jtfDesc.getText());
+						if (ControladorCurso.actualizarCurso(c) == 1) {
+							JOptionPane.showMessageDialog(null, "Actualización o inserción correcta",
+									"Gestion de fabricantes", JOptionPane.INFORMATION_MESSAGE);
+						}
+						GestionCurso.mostrarCurso(ControladorCurso.findUltimoCurso());
+					} else {
+						ControladorCurso.creacion(new Curso(autoId));
+					}
+
+				}
+			}
+		});
+		// btnNewButton_5.setIcon(new
+		// ImageIcon(PanelAInsertarEnJDialog.class.getResource("/tutorialJava/capitulo8_AWT_SWING/res/guardar.png")));
+		toolBar.add(btnNewButton_5);
+
+		btnNewButton_6 = new JButton("");
+		btnNewButton_6.setIcon(
+				new ImageIcon(PanelAInsertarEnJDialog.class.getResource("/capitulo08/Ejercicio02/res/eliminar.png")));
+		btnNewButton_6.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				// yes = 0 no = 1
+				if (ent == 0) {
+					if (JOptionPane.showConfirmDialog(null, "¿Desea eliminar el registro?", "Gestión de cursos",
+							JOptionPane.YES_NO_OPTION) == 0) {
+						if (ControladorCurso.borrarCurso(Integer.parseInt(GestionCurso.jtfId.getText())) == 1) {
+							JOptionPane.showMessageDialog(null, "Borrado correcto", "Gestion de cursos",
+									JOptionPane.INFORMATION_MESSAGE);
+						}
+					}
+
+				}
+			}
+		});
+		toolBar.add(btnNewButton_6);
 
 		if (ent == 0) {
 			add(GestionCurso.getInstance(), BorderLayout.CENTER);

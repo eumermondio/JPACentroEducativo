@@ -102,19 +102,19 @@ public class GestionCurso extends JPanel {
 			jtfId.setText("" + c.getId());
 			jtfDesc.setText(c.getDescripcion());
 		}
-//		if (ControladorCurso.devolverAnterior(Integer.parseInt(jtfId.getText())) == null) {
-//			PanelAInsertarEnJDialog.btnNewButton.setEnabled(false);
-//			PanelAInsertarEnJDialog.btnNewButton_1.setEnabled(false);
-//		} else {
-//			PanelAInsertarEnJDialog.btnNewButton.setEnabled(true);
-//			PanelAInsertarEnJDialog.btnNewButton_1.setEnabled(true);
-//		}
-//		if (ControladorCurso.devolverSiguiente(Integer.parseInt(jtfId.getText())) == null) {
-//			PanelAInsertarEnJDialog.btnNewButton_2.setEnabled(false);
-//			PanelAInsertarEnJDialog.btnNewButton_3.setEnabled(false);
-//		} else {
-//			PanelAInsertarEnJDialog.btnNewButton_2.setEnabled(true);
-//			PanelAInsertarEnJDialog.btnNewButton_3.setEnabled(true);
-//		}
+		if (ControladorCurso.devolverAnterior(Integer.parseInt(jtfId.getText())) == null) {
+			PanelAInsertarEnJDialog.btnNewButton.setEnabled(false);
+			PanelAInsertarEnJDialog.btnNewButton_1.setEnabled(false);
+		} else {
+			PanelAInsertarEnJDialog.btnNewButton.setEnabled(true);
+			PanelAInsertarEnJDialog.btnNewButton_1.setEnabled(true);
+		}
+		if (ControladorCurso.devolverSiguiente(Integer.parseInt(jtfId.getText())) == null) {
+			PanelAInsertarEnJDialog.btnNewButton_2.setEnabled(false);
+			PanelAInsertarEnJDialog.btnNewButton_3.setEnabled(false);
+		} else {
+			PanelAInsertarEnJDialog.btnNewButton_2.setEnabled(true);
+			PanelAInsertarEnJDialog.btnNewButton_3.setEnabled(true);
+		}
 	}
 }
