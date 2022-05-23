@@ -57,42 +57,53 @@ public class ControladorCurso extends ControladorGeneral {
 	/**
 	 * 
 	 */
-	public static void creacion(Curso c) {
+	public static boolean creacion(Curso c) {
 		EntityManager em = buscarId();
-
-		em.getTransaction().begin();
-		em.persist(c);
-		em.getTransaction().commit();
-
-		em.close();
-	}
-
-	/**
-	 * 
-	 */
-	public static void modificacionEntidad(Curso c) {
-		EntityManager em = buscarId();
-
-		em.getTransaction().begin();
-		em.merge(c);
-		em.getTransaction().commit();
-
-		em.close();
-	}
-
-	/**
-	 * 
-	 */
-	public static void eliminacion(Curso c) {
-		EntityManager em = buscarId();
-
-		em.getTransaction().begin();
-		if (!em.contains(c)) {
-			c = em.merge(c);
+		try {
+			em.getTransaction().begin();
+			em.persist(c);
+			em.getTransaction().commit();
+			em.close();
+			return true;
+		} catch (Exception e) {
+			return false;
 		}
-		em.remove(c);
-		em.getTransaction().commit();
+	}
 
-		em.close();
+	/**
+	 * 
+	 */
+	public static boolean modificacionEntidad(Curso c) {
+		EntityManager em = buscarId();
+		try {
+			em.getTransaction().begin();
+			em.merge(c);
+			em.getTransaction().commit();
+
+			em.close();
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+	}
+
+	/**
+	 * 
+	 */
+	public static boolean eliminacion(Curso c) {
+		EntityManager em = buscarId();
+		try {
+			em.getTransaction().begin();
+			if (!em.contains(c)) {
+				c = em.merge(c);
+			}
+			em.remove(c);
+			em.getTransaction().commit();
+
+			em.close();
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
 	}
 }
